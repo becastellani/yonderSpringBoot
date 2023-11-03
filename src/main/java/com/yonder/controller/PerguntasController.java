@@ -48,7 +48,7 @@ public class PerguntasController {
 		return ResponseEntity.ok("Pergunta adicionada com Sucesso!");
 	}
 	
-    @PutMapping("/{id}") // 
+    @PutMapping("/{id}") 
     public Perguntas atualizar(@PathVariable Integer id, @RequestBody Perguntas pergunta) {
         Optional<Perguntas> perguntaExistente = perguntasRepository.findById(id);
         if (perguntaExistente.isPresent()) {

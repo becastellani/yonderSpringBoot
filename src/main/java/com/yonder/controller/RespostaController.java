@@ -45,10 +45,10 @@ public class RespostaController {
 	}
 
 	@PostMapping("/adicionar") 
-	public  ResponseEntity<String> adicionar(@RequestBody Resposta resposta) {
-		respostaRepository.save(resposta);
-		return ResponseEntity.ok("Resposta adicionada com Sucesso!");
-	}
+    public ResponseEntity<String> adicionar(@RequestBody List<Resposta> respostas) {
+        respostaRepository.saveAll(respostas);
+        return ResponseEntity.ok("Respostas adicionadas com sucesso!");
+    }
 	
     @PutMapping("/{id}") // 
     public Resposta atualizar(@PathVariable Integer id, @RequestBody Resposta resposta) {

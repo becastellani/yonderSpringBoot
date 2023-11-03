@@ -49,11 +49,13 @@ public class UsuarioController {
 	}
 	
     @PutMapping("/{id}") // 
-    public Usuario atualizar(@PathVariable Integer id, @RequestBody Usuario usuario) {
+    public ResponseEntity<String> atualizar(@PathVariable Integer id, @RequestBody Usuario usuario) {
         Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
         if (usuarioExistente.isPresent()) {
             usuario.setId(id); 
-            return usuarioRepository.save(usuario);
+            usuarioRepository.save(usuario);
+            return ResponseEntity.ok("Usuario atualizado com sucesso");
+            		
         } else {
             throw new RuntimeException("Usuario nao encontrado com o ID: " + id);
         }
